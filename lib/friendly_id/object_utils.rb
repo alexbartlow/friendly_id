@@ -34,8 +34,12 @@ module FriendlyId
 
       if unfriendly_classes.detect {|klass| self.class <= klass}
         false
-      elsif respond_to?(:to_i) && to_i.to_s != to_s
-        true
+      elsif respond_to?(:to_i)
+        if to_i.to_s != to_s
+          true
+        else
+          false
+        end
       end
     end
 
